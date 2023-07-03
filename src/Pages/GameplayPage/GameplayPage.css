@@ -1,0 +1,96 @@
+.gameplay-frame{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gameplay-frame .gameplay-note-line{
+    width: 128px;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.5) 82%, white 82%,white 85%, rgba(0,0,0,0.5) 85%);
+    margin: 0.5em;
+    z-index: 5;
+}
+
+.gameplay-frame .gameplay-note-line-keydown{
+    width: 128px;
+    height: 100%;
+    background: linear-gradient(rgba(200, 200, 200, 0.5) 82%, white 82%,white 85%, rgba(200, 200, 200,1) 85%);
+    margin: 0.5em;
+    z-index: 5;
+}
+
+.gameplay-note{
+    background-color: rgb(0, 221, 255);
+    width: 128px;
+    height: 3%;
+    position: fixed;
+    box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.5);
+}
+
+.hit-score-text{
+    color: white;
+    font-size: 50px;
+    position: fixed;
+    z-index: 5;
+    font-weight: bolder;
+    top: 20%;
+}
+
+.accuracy-text{
+    position: fixed;
+    color: white;
+    font-weight: 700;
+    font-size: 2em;
+    top: 5%;
+    z-index: 5;
+}
+.score-top-text{
+    position: fixed;
+    color: white;
+    font-weight: 100;
+    font-size: 3em;
+    top:0;
+    z-index: 5;
+}
+
+.gameplay-note-line-keyname{
+    color: white;
+    font-weight: 100;
+    font-size: 2em;
+    bottom: 5%;
+    position: fixed;
+    width: 128px;
+    text-align: center;
+}
+
+.ranking-top-text{
+    color: gold;
+    font-weight: 1000;
+    transform: translate(210px);
+    font-size: 5em;
+    z-index: 5;
+    position: fixed;
+    top: 0;
+}
+
+.misscount-top-text{
+    color: white;
+    font-size: 2em;
+    font-weight: 100;
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    transform: translate(-210px);
+}
+
+.combo-text{
+    color: white;
+    font-size: 5em;
+    font-weight: 700;
+    position: fixed;
+    bottom: 30%;
+    z-index: 5;
+}

@@ -1,0 +1,23 @@
+.map-bg-img{
+    position: fixed;
+    top: 50%; right: 50%;
+    transform: translate(50%,-50%);
+    filter: blur(12px);
+    pointer-events: none;
+    z-index: -1;
+}
+
+@media (min-aspect-ratio: 16/9) {
+    .map-bg-img {
+        height: auto;
+        width: 120%;
+    }
+  }
+  
+  /* Maximum aspect ratio */
+  @media (max-aspect-ratio: 16/9) {
+    .map-bg-img {
+        height: 120%;
+        width: auto;
+    }
+  }

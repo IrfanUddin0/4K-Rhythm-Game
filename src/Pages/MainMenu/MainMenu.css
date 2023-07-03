@@ -1,0 +1,43 @@
+.main-menu-page-frame{
+    height: 100%;
+    width: 100%;
+}
+
+.main-menu-sidebar{
+    left: 0;
+    height: 100%;
+    width: 128px;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.main-menu-sidebar-buttons{
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: all 0.2s linear;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-menu-sidebar-buttons:hover{
+    background-color: rgba(0, 0, 0, 1);
+    aspect-ratio: 0.75;
+}
+
+.main-menu-sidebar-buttons img{
+    width: 60%;
+}
+
+.main-menu-song-player{
+    position: fixed;
+    bottom: 1%;
+    right: 1%;
+}
