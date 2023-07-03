@@ -3,6 +3,7 @@ import './App.css';
 
 import { GameplayPage } from './Pages/GameplayPage/GameplayPage';
 import { MainMenuPage } from './Pages/MainMenu/MainMenu';
+import { SongSelect } from './Pages/SongSelect/SongSelect';
 
 export default function App() {
   return (
@@ -11,7 +12,7 @@ export default function App() {
         <Routes>
             <Route path='/' element={<Navigate to='Main'/>}/>
             <Route path='Main' element={<MainMenuPage/>}/>
-            <Route path='SongSelect'/>
+            <Route path='SongSelect' element={<SongSelect/>}/>
             <Route path='Game' element={<GameplayPage/>}/>
         </Routes>
         </BrowserRouter>

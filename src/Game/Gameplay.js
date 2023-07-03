@@ -3,6 +3,7 @@ import { GameState } from "./GameState";
 
 import hitnormal_sound from './Assets/hitnormal.wav'
 import combobreak_sound from './Assets/combobreak.wav'
+import { SongSelection } from "./SongSelection";
 
 class GameplayNote {
     constructor(pos, time) {
@@ -84,8 +85,13 @@ export class Gameplay extends GameState {
         this.currentCombo = 0;
         this.maxCombo = 0;
 
-        window.addEventListener("keydown", (event) => { this.onKeyDown(event) });
-        window.addEventListener("keyup", (event) => { this.onKeyUp(event) });
+        this.keydown_handler = (event) => { this.onKeyDown(event) };
+        this.keyup_handler = (event) => { this.onKeyUp(event) };
+
+        window.addEventListener("keydown", this.keydown_handler);
+        window.addEventListener("keyup", this.keyup_handler);
+
+        this.finish_timeout = window.setTimeout(function(){GameInstance.getInstance().setGameState(new SongSelection())},this.map_length+1000);
     }
 
     onBeginPlay() {
@@ -97,11 +103,17 @@ export class Gameplay extends GameState {
     }
 
     destroy() {
+        console.log("destroying gameplay state");
         this.map_objects.forEach(element => {
             element.destroy();
             this.map_objects.pop();
         });
         this.audio.pause();
+
+        window.removeEventListener("keydown", this.keydown_handler);
+        window.removeEventListener("keyup", this.keyup_handler);
+
+        clearTimeout(this.finish_timeout);
     }
 
     getElapsedTime() {

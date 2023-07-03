@@ -4,7 +4,9 @@ import "./MainMenu.css";
 import MapBackground from "../../Components/MapBackground/MapBackground";
 import { Link } from "react-router-dom";
 import { SongPlayer } from "../../Components/SongPlayer/SongPlayer";
+// eslint-disable-next-line
 import { GameInstance } from "../../Game/GameInstance";
+// eslint-disable-next-line
 import { Gameplay } from "../../Game/Gameplay";
 
 export class MainMenuPage extends React.Component{    
@@ -14,10 +16,6 @@ export class MainMenuPage extends React.Component{
                 <MapBackground />
                 <Sidebar />
                 <SongPlayer className={"main-menu-song-player"}/>
-                <Link to="../Game">
-                    <button onClick={function(){GameInstance.getInstance().setGameState(new Gameplay())}}>test</button>
-                </Link>
-                
             </div>
         )
     }

@@ -3,7 +3,7 @@ import koshaberikiyo from './FantasticYouth-Koshaberi-kiyo.mp3'
 
 export var song_data = [
     {
-        "song_title": "PSYQUI - Still In My Heart",
+        "song_title": "PSYQUI - Still in my heart feat. Punipuni Denki",
         "map_creator": "cyno",
         "background_url": "https://images5.alphacoders.com/131/1316292.jpeg",
         "audio_ref": psyquistillinmyheart,
@@ -120,11 +120,13 @@ export var song_data = [
         "map_creator": "cyno",
         "background_url": "https://images2.alphacoders.com/131/1314561.png",
         "audio_ref": koshaberikiyo,
-        "offset": 1150*2,
+        "offset": 124*2,
         "bpm": 172,
         "charts": [
             [
                 [1, 0],
+                [2, 289-11],
+                [1, 474+289-11]
             ]
         ]
 

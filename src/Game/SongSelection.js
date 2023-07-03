@@ -24,7 +24,6 @@ export class SongSelection extends GameState {
 
     destroy() {
         this.audio_ref.pause();
-        delete this;
     }
 
     pauseUnpauseSong() {
@@ -60,6 +59,16 @@ export class SongSelection extends GameState {
 
     getSongProgressPercent(){
         return (this.audio_ref.currentTime / this.audio_ref.duration) * 100;
+    }
+
+    skipToPercent(percent){
+        percent = percent <= 0 
+        ? 0 
+        : percent >= 1 
+          ? 1 
+          : percent;
+
+        this.audio_ref.currentTime = percent * this.audio_ref.duration;
     }
 
     static getRandomSong(){

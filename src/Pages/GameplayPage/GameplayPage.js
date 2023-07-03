@@ -4,7 +4,13 @@ import "./GameplayPage.css";
 import MapBackground from '../../Components/MapBackground/MapBackground'
 import { GameInstance } from "../../Game/GameInstance";
 
+import { Navigate } from "react-router-dom";
+
 export const GameplayPage = () => {
+    if (!GameInstance.getInstance().getGameplayState()) {
+        return (<Navigate to="../SongSelect" />)
+    }
+
     return (
         <div className="gameplay-frame">
             <MapBackground />
