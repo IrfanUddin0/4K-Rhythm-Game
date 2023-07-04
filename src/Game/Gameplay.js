@@ -11,29 +11,29 @@ class GameplayNote {
         this.time = time;
 
         this.hittable = true;
-        this.hitwindows = [75,200,300];
-        this.hitwindow_scores = [1000,500,50]
+        this.hitwindows = [75, 200, 300];
+        this.hitwindow_scores = [1000, 500, 50]
         this.state = 'normal';
         this.score = 0;
 
-        this.timeout = window.setTimeout(()=>{this.missWindow(this)}, this.time + GameInstance.getInstance().currentSong["offset"] + this.hitwindows[2])
+        this.timeout = window.setTimeout(() => { this.missWindow(this) }, this.time + GameInstance.getInstance().currentSong["offset"] + this.hitwindows[2])
     }
 
     onKeyDown(key) {
         var elapsed_time = GameInstance.getInstance().getGameplayState().getElapsedTime();
-        if(this.hittable && key===GameInstance.getInstance().gameSettings[this.pos]){
+        if (this.hittable && key === GameInstance.getInstance().gameSettings[this.pos]) {
             var note_time = this.time + GameInstance.getInstance().currentSong["offset"];
             if (note_time - this.hitwindows[2] <= elapsed_time &&
                 elapsed_time <= note_time + this.hitwindows[2]) {
-                    this.hittable = false;
-                    this.state = 'hit';
-                    var time_delta = Math.abs(note_time - elapsed_time);
-                    for (let i = this.hitwindow_scores.length - 1; i >= 0; i--) {
-                        this.score = time_delta<=this.hitwindows[i]? this.hitwindow_scores[i] : this.score;
-                    }
-                    GameInstance.getInstance().getGameplayState().addCombo();
-                    GameInstance.getInstance().getGameplayState().setDisplayText(this.score);
-                    return this;
+                this.hittable = false;
+                this.state = 'hit';
+                var time_delta = Math.abs(note_time - elapsed_time);
+                for (let i = this.hitwindow_scores.length - 1; i >= 0; i--) {
+                    this.score = time_delta <= this.hitwindows[i] ? this.hitwindow_scores[i] : this.score;
+                }
+                GameInstance.getInstance().getGameplayState().addCombo();
+                GameInstance.getInstance().getGameplayState().setDisplayText(this.score);
+                return this;
             }
         }
         return null;
@@ -44,7 +44,7 @@ class GameplayNote {
             console.log("missed");
             this.hittable = false;
             this.state = 'missed';
-            if(GameInstance.getInstance().getGameplayState().currentCombo>=4){
+            if (GameInstance.getInstance().getGameplayState().currentCombo >= 4) {
                 GameInstance.getInstance().playAudio(combobreak_sound);
             }
 
@@ -53,24 +53,24 @@ class GameplayNote {
         }
     }
 
-    destroy(){
+    destroy() {
         clearTimeout(this.timeout);
     }
 }
 
 class HitScoreText {
-    constructor(text){
+    constructor(text) {
         this.text = text;
         this.birth_time = new Date();
     }
 
-    getElapsedTime(){
+    getElapsedTime() {
         return new Date() - this.birth_time;
     }
 }
 
 export class Gameplay extends GameState {
-    constructor(chart_no=0) {
+    constructor(chart_no = 0) {
         super();
 
         this.start_time = new Date();
@@ -84,6 +84,12 @@ export class Gameplay extends GameState {
         this.map_length = this.calcMapLength();
 
         this.held_keys = [];
+        this.game_keys = [
+            GameInstance.getInstance().gameSettings[1],
+            GameInstance.getInstance().gameSettings[2],
+            GameInstance.getInstance().gameSettings[3],
+            GameInstance.getInstance().gameSettings[4]
+        ]
         this.display_text = [];
 
         this.currentCombo = 0;
@@ -95,7 +101,7 @@ export class Gameplay extends GameState {
         window.addEventListener("keydown", this.keydown_handler);
         window.addEventListener("keyup", this.keyup_handler);
 
-        this.finish_timeout = window.setTimeout(function(){GameInstance.getInstance().setGameState(new SongSelection())},this.map_length+1000);
+        this.finish_timeout = window.setTimeout(function () { GameInstance.getInstance().setGameState(new SongSelection()) }, this.map_length + 2000);
     }
 
     onBeginPlay() {
@@ -126,11 +132,11 @@ export class Gameplay extends GameState {
 
     onKeyDown(event) {
         var key = event.key.toUpperCase();
-        if (!this.isKeyDown(key)) {
+        if (!this.isKeyDown(key) && this.game_keys.includes(key)) {
             this.held_keys.push(key);
             GameInstance.getInstance().playAudio(hitnormal_sound);
             for (let i = 0; i < this.map_objects.length; i++) {
-                if(this.map_objects[i].onKeyDown(key)){
+                if (this.map_objects[i].onKeyDown(key)) {
                     return;
                 }
             }
@@ -161,31 +167,31 @@ export class Gameplay extends GameState {
         return length + GameInstance.getInstance().currentSong["offset"];
     }
 
-    setDisplayText(text){
+    setDisplayText(text) {
         this.display_text.push(new HitScoreText(text));
     }
 
-    calculateActualCurrentScore(){
+    calculateActualCurrentScore() {
         var out_score = 0;
         this.map_objects.forEach(element => {
-            if(!element.hittable){
+            if (!element.hittable) {
                 out_score += element.score;
             }
         });
         return out_score;
     }
 
-    calculateMaxCurrentScore(){
+    calculateMaxCurrentScore() {
         var out_score = 0;
         this.map_objects.forEach(element => {
-            if(!element.hittable){
+            if (!element.hittable) {
                 out_score += element.hitwindow_scores[0];
             }
         });
         return out_score;
     }
 
-    calculateTotalMapMaxScore(){
+    calculateTotalMapMaxScore() {
         var out_score = 0;
         this.map_objects.forEach(element => {
             out_score += element.hitwindow_scores[0];
@@ -193,26 +199,26 @@ export class Gameplay extends GameState {
         return out_score;
     }
 
-    calculateAccuracy(){
-        if (this.calculateMaxCurrentScore()===0){
+    calculateAccuracy() {
+        if (this.calculateMaxCurrentScore() === 0) {
             return 0.0
         }
-        return Math.floor((this.calculateActualCurrentScore() / this.calculateMaxCurrentScore()) * 10000)/100.0;
+        return Math.floor((this.calculateActualCurrentScore() / this.calculateMaxCurrentScore()) * 10000) / 100.0;
     }
 
-    calculateCurrentScoreMillion(){
-        return Math.floor((this.calculateActualCurrentScore() / this.calculateTotalMapMaxScore())*1000000);
+    calculateCurrentScoreMillion() {
+        return Math.floor((this.calculateActualCurrentScore() / this.calculateTotalMapMaxScore()) * 1000000);
     }
 
-    calculateRanking(){
+    calculateRanking() {
         var acc = this.calculateAccuracy();
-        if (acc >= 100){
+        if (acc >= 100) {
             return 'SS'
         }
-        else if (acc >= 95){
+        else if (acc >= 95) {
             return 'S'
         }
-        else if (acc >= 90){
+        else if (acc >= 90) {
             return 'A'
         }
         else if (acc >= 85) {
@@ -226,10 +232,10 @@ export class Gameplay extends GameState {
         }
     }
 
-    getMissCount(){
+    getMissCount() {
         var count = 0;
         this.map_objects.forEach(element => {
-            if(element.state === 'missed'){
+            if (element.state === 'missed') {
                 count += 1;
             }
         });
@@ -237,14 +243,14 @@ export class Gameplay extends GameState {
         return count;
     }
 
-    addCombo(){
+    addCombo() {
         this.currentCombo += 1;
-        if(this.currentCombo > this.maxCombo){
+        if (this.currentCombo > this.maxCombo) {
             this.maxCombo = this.currentCombo;
         }
     }
 
-    breakCombo(){
+    breakCombo() {
         this.currentCombo = 0;
     }
 }

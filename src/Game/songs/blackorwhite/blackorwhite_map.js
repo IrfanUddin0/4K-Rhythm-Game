@@ -3,7 +3,7 @@ import blackorwhite from './BLACKorWHITE.mp3'
 export var blackorwhite_map =
 {
     "song_title": "BlackYooh vs. siromaru - BLACK or WHITE?",
-    "map_creator": "cyno",
+    "map_creator": "DE-CADE",
     "background_url": "https://konachan.net/sample/070ae027511b3a497fc9b030823d94fa/Konachan.com%20-%20353730%20sample.jpg",
     "audio_ref": blackorwhite,
     "offset": 320 * 2,

@@ -10,6 +10,9 @@ import { GameInstance } from "../../Game/GameInstance";
 import { Gameplay } from "../../Game/Gameplay";
 
 export const SongSelect = () => {
+    if(!GameInstance.getInstance().getSongSelectionState()){
+        window.location.reload();
+    }
     return (
         <div className="song-select-frame">
             <MapBackground />
