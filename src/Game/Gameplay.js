@@ -20,13 +20,14 @@ class GameplayNote {
     }
 
     onKeyDown(key) {
+        var elapsed_time = GameInstance.getInstance().getGameplayState().getElapsedTime();
         if(this.hittable && key===GameInstance.getInstance().gameSettings[this.pos]){
             var note_time = this.time + GameInstance.getInstance().currentSong["offset"];
-            if (note_time - this.hitwindows[2] <= GameInstance.getInstance().getGameplayState().getElapsedTime() &&
-                GameInstance.getInstance().getGameplayState().getElapsedTime() <= note_time + this.hitwindows[2]) {
+            if (note_time - this.hitwindows[2] <= elapsed_time &&
+                elapsed_time <= note_time + this.hitwindows[2]) {
                     this.hittable = false;
                     this.state = 'hit';
-                    var time_delta = Math.abs(note_time - GameInstance.getInstance().getGameplayState().getElapsedTime());
+                    var time_delta = Math.abs(note_time - elapsed_time);
                     for (let i = this.hitwindow_scores.length - 1; i >= 0; i--) {
                         this.score = time_delta<=this.hitwindows[i]? this.hitwindow_scores[i] : this.score;
                     }
@@ -43,9 +44,12 @@ class GameplayNote {
             console.log("missed");
             this.hittable = false;
             this.state = 'missed';
+            if(GameInstance.getInstance().getGameplayState().currentCombo>=4){
+                GameInstance.getInstance().playAudio(combobreak_sound);
+            }
+
             GameInstance.getInstance().getGameplayState().breakCombo();
             GameInstance.getInstance().getGameplayState().setDisplayText("miss");
-            GameInstance.getInstance().playAudio(combobreak_sound);
         }
     }
 

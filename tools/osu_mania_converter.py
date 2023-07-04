@@ -1,5 +1,5 @@
 #converts osu mania map to chart objects for the game
-import sys, os, pyperclip
+import sys, os, pyperclip, math
 
 def parseMap(path):
     def parseObjects(file):
@@ -16,21 +16,9 @@ def parseMap(path):
                 except Exception as e:
                     return None
             
-            pos = 0
+            pos = max(min(math.floor((converted_split[0]*4)/512) + 1, 4), 1)
             time = converted_split[2]
-            
-            match converted_split[0]:
-                case 64:
-                    pos = 1
-                case 192:
-                    pos = 2
-                case 320:
-                    pos = 3
-                case 448:
-                    pos = 4
-                case _:
-                    return None
-                
+        
             out.append([pos, time])
 
         return out

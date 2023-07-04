@@ -2,6 +2,7 @@ import psyquistillinmyheart from './PSYQUI-still_in_my_heart.mp3'
 import koshaberikiyo from './FantasticYouth-Koshaberi-kiyo.mp3'
 
 import { love10_map } from './love10/love10_map'
+import { blackorwhite_map } from './blackorwhite/blackorwhite_map'
 
 export var song_data = [
     {
@@ -131,5 +132,6 @@ export var song_data = [
             ]
         ]
     },
-    love10_map
+    love10_map,
+    blackorwhite_map
 ]
