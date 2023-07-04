@@ -20,9 +20,13 @@ export const SongSelect = () => {
                     return element === GameInstance.getInstance().currentSong ? (<SongSelectCard map={element} active={true} />) : (<SongSelectCard map={element} />)
                 })}
             </div>
-            <Link to="../Game" style={{ position: 'absolute' }}>
-                <button onClick={function () { GameInstance.getInstance().setGameState(new Gameplay()) }}>test</button>
-            </Link>
+            {GameInstance.getInstance().currentSong.charts.map((element, index) => {
+                return (
+                    <Link to="../Game" style={{ position: 'relative' }}>
+                        <button onClick={function () { GameInstance.getInstance().setGameState(new Gameplay(index)) }}>{index}</button>
+                    </Link>
+                )
+            })}
         </div>
     )
 }

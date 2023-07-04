@@ -7,7 +7,7 @@ import App from './App';
 import { GameInstance } from './Game/GameInstance';
 import { SongSelection } from './Game/SongSelection';
 
-const TICK_SPEED_MS = 10;
+const TICK_SPEED_MS = 8;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

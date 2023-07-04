@@ -1,6 +1,8 @@
 import psyquistillinmyheart from './PSYQUI-still_in_my_heart.mp3'
 import koshaberikiyo from './FantasticYouth-Koshaberi-kiyo.mp3'
 
+import { love10_map } from './love10/love10_map'
+
 export var song_data = [
     {
         "song_title": "PSYQUI - Still in my heart feat. Punipuni Denki",
@@ -113,7 +115,6 @@ export var song_data = [
                 [2, (252)*87],
             ]
         ]
-
     },
     {
         "song_title": "Fantastic Youth - Koshaberi Kiyo",
@@ -129,6 +130,6 @@ export var song_data = [
                 [1, 474+289-11]
             ]
         ]
-
-    }
+    },
+    love10_map
 ]
