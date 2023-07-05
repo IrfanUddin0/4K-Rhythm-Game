@@ -252,3 +252,30 @@
 .actual-score-text{
     font-size: calc(0.9vw + 0.9vh);
 }
+
+.osu-button{
+    position: absolute;
+    width: 20%;
+    right: 0;
+    aspect-ratio: 2;
+    border-radius: 100vw;
+    background-color: rgb(232, 102, 160);
+    box-shadow: 0px 0px 5px black;
+
+    color: white;
+    font-size: calc(0.5vw + 0.5vh);
+    font-weight: 500;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    cursor:pointer;
+
+    transition: all 0.2s linear;
+}
+
+.osu-button:hover{
+    filter: brightness(1.5);
+}

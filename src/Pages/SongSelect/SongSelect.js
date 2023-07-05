@@ -83,6 +83,7 @@ class MapDetailsSongSelect extends React.Component{
         }
         return(
             <div className="map-details-song-select">
+                <OsuPageButton/>
                 <div className="black-bg map-details-section">
                     <p className="song-title">
                         {GameInstance.getInstance().currentSong["song_title"]}
@@ -114,6 +115,16 @@ class MapDetailsSongSelect extends React.Component{
                         Combo  <div className="actual-score-text">{Scores.getHighScoreForCurrentSong(this.diff)[1].toLocaleString()}</div>
                     </div>
                 </div>
+            </div>
+        )
+    }
+}
+
+const OsuPageButton = () => {
+    if(GameInstance.getInstance().currentSong["osu_link"]){
+        return(
+            <div className="osu-button" onClick={function(){window.open(GameInstance.getInstance().currentSong["osu_link"])}}>
+                osu! map
             </div>
         )
     }
