@@ -4,8 +4,9 @@ import { GameState } from "./GameState";
 import { song_data } from "./songs/song_data";
 
 export class SongSelection extends GameState {
-    constructor() {
+    constructor(viewscore=false) {
         super();
+        this.viewscore=viewscore;
         this.song_history = [];
         this.paused = false;
 
@@ -15,7 +16,9 @@ export class SongSelection extends GameState {
     }
 
     onBeginPlay() {
-        this.AddSong(GameInstance.getInstance().currentSong);
+        if(GameInstance.getInstance().currentSong){
+            this.AddSong(GameInstance.getInstance().currentSong);
+        }
     }
 
     onUpdate() {
@@ -72,6 +75,9 @@ export class SongSelection extends GameState {
     }
 
     static getRandomSong(){
+        if (song_data.length===0){
+            return null;
+        }
         return song_data[Math.floor(Math.random()*(song_data.length))];
     }
 }

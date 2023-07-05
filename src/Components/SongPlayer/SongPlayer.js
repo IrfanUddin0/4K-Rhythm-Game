@@ -3,6 +3,11 @@ import "./SongPlayer.css";
 import { GameInstance } from "../../Game/GameInstance";
 
 export const SongPlayer = ({ className }) => {
+    if(!GameInstance.getInstance().currentSong || !GameInstance.getInstance().getSongSelectionState()){
+        return (
+            <div/>
+        )
+    }
     return (
         <div className={`np-container ${className}`} style={{ backgroundImage: `url(${GameInstance.getInstance().currentSong["background_url"]})` }}>
             <div className="nowplaying-control-buttons">

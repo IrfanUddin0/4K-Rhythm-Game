@@ -1,0 +1,13 @@
+{
+    "maps": [
+        {
+            "url": "./songs/stillinmyheart/stillinmyheart_map.json"
+        },
+        {
+            "url": "./songs/love10/love10_map.json"
+        },
+        {
+            "url": "./songs/blackorwhite/blackorwhite_map.json"
+        }
+    ]
+}

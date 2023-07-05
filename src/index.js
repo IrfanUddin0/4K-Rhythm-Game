@@ -6,12 +6,16 @@ import App from './App';
 
 import { GameInstance } from './Game/GameInstance';
 import { SongSelection } from './Game/SongSelection';
+import { load_song_data } from './Game/songs/song_data'
+import { Scores } from './Game/Scores';
 
 const TICK_SPEED_MS = 8;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 function InitGame() {
+    load_song_data();
+    Scores.init();
     GameInstance.init();
     GameInstance.getInstance().setGameState(new SongSelection());
 }

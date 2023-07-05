@@ -4,6 +4,7 @@ import { GameState } from "./GameState";
 import hitnormal_sound from './Assets/hitnormal.wav'
 import combobreak_sound from './Assets/combobreak.wav'
 import { SongSelection } from "./SongSelection";
+import { Scores } from "./Scores";
 
 class GameplayNote {
     constructor(pos, time) {
@@ -41,7 +42,6 @@ class GameplayNote {
 
     missWindow(self) {
         if (this.hittable) {
-            console.log("missed");
             this.hittable = false;
             this.state = 'missed';
             if (GameInstance.getInstance().getGameplayState().currentCombo >= 4) {
@@ -73,6 +73,7 @@ export class Gameplay extends GameState {
     constructor(chart_no = 0) {
         super();
 
+        this.chart_no = chart_no;
         this.start_time = new Date();
         this.audio = GameInstance.getInstance().playAudio(GameInstance.getInstance().currentSong["audio_ref"]);
 
@@ -101,7 +102,7 @@ export class Gameplay extends GameState {
         window.addEventListener("keydown", this.keydown_handler);
         window.addEventListener("keyup", this.keyup_handler);
 
-        this.finish_timeout = window.setTimeout(function () { GameInstance.getInstance().setGameState(new SongSelection()) }, this.map_length + 2000);
+        this.finish_timeout = window.setTimeout(() => {this.onMapComplete();}, this.map_length + 2000);
     }
 
     onBeginPlay() {
@@ -110,6 +111,22 @@ export class Gameplay extends GameState {
     }
 
     onUpdate() {
+    }
+
+    onMapComplete() {
+        Scores.saveScore(
+            GameInstance.getInstance().currentSong,
+            this.chart_no, this.calculateAccuracy(),
+            this.calculateCurrentScoreMillion(),
+            this.getPerfectCount(),
+            this.getGoodCount(),
+            this.getOkCount(),
+            this.getMissCount(),
+            this.maxCombo,
+            GameInstance.getInstance().currentSong["charts"][this.chart_no].length
+            );
+
+        GameInstance.getInstance().setGameState(new SongSelection(true));
     }
 
     destroy() {
@@ -236,6 +253,39 @@ export class Gameplay extends GameState {
         var count = 0;
         this.map_objects.forEach(element => {
             if (element.state === 'missed') {
+                count += 1;
+            }
+        });
+
+        return count;
+    }
+
+    getPerfectCount() {
+        var count = 0;
+        this.map_objects.forEach(element => {
+            if (element.score === element.hitwindow_scores[0]) {
+                count += 1;
+            }
+        });
+
+        return count;
+    }
+
+    getGoodCount() {
+        var count = 0;
+        this.map_objects.forEach(element => {
+            if (element.score === element.hitwindow_scores[1]) {
+                count += 1;
+            }
+        });
+
+        return count;
+    }
+
+    getOkCount() {
+        var count = 0;
+        this.map_objects.forEach(element => {
+            if (element.score === element.hitwindow_scores[2]) {
                 count += 1;
             }
         });

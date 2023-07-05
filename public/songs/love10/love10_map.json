@@ -1,11 +1,9 @@
-import love10 from './love10.mp3'
-
-export var love10_map = {
+{
     "song_title": "MasaraP/masara & ran. - Love10 feat. Juunana",
     "map_creator": "chistoefur",
     "background_url": "https://safebooru.org//samples/1727/sample_604b21b7c75b09b7390477c1f28b0c12e633c504.jpg",
-    "audio_ref": love10,
-    "offset": 900 * 2,
+    "audio_ref": "https://mehwehxd.s-ul.eu/0bcWbHF8",
+    "offset": 1800,
     "bpm": 136,
     "charts": [
         [[1, 0],

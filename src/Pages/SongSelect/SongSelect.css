@@ -60,7 +60,7 @@
     color: white;
     border-radius: 100vw;
     height: auto;
-    aspect-ratio: 4;
+    aspect-ratio: 3.5;
     margin: 2%;
 
     display: flex;
@@ -91,6 +91,7 @@
 }
 
 .song-title {
+    font-family: 'Roboto', sans-serif;
     padding: 1em;
     color: white;
     font-size: calc(1vw + 1vh);
@@ -107,6 +108,7 @@
 }
 
 .song-details{
+    font-family: 'Roboto', sans-serif;
     padding: 2%;
     color: white;
     font-size: calc(0.5vw + 0.5vh);
@@ -124,8 +126,10 @@
 }
 
 .inactive-frame{
-    aspect-ratio: 5;
-    transform: translateX(0%);
+    aspect-ratio: 4.5;
+    transform: translateX(-3%);
+    transform-origin: 150% 50%;
+    box-shadow: none;
 }
 
 .inactive-frame::before{
@@ -142,4 +146,109 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+}
+
+.map-details-song-select{
+    height: 60vh;
+    width: 42.5vh;
+    max-width: 50%;
+
+    position: fixed;
+    right: 1%;
+    top: 10%;
+
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: calc(1vw + 1vh);
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.map-details-song-select>*{
+    margin-top: 5%;
+}
+
+.map-details-song-select .black-bg{
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: calc(1vw + 1vh);
+}
+
+.map-details-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.map-details-song-select .black-bg>*{
+    margin: 2%;
+}
+
+.map-details-song-select .black-bg .start-button{
+    font-family: 'Roboto', sans-serif;
+    font-size: calc(1vw + 1vh);
+    font-weight: 300;
+    border: none;
+    background-color: gold;
+    border-radius: 100vw;
+    height: calc(2vw + 2vh);
+    width: 100%;
+}
+
+.diff-button{
+    height: calc(2vw + 2vh);
+    aspect-ratio: 1;
+    border: none;
+    border-radius: 100vw;
+    background-color: transparent;
+    border: calc(0.2vw + 0.2vh) solid gold;
+    color: gold;
+
+    font-family: 'Roboto', sans-serif;
+    font-weight: 1000;
+    font-size: calc(0.5vw + 0.5vh);
+}
+
+.diff-button-active{
+    background-color: gold;
+    color: white;
+    text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.diff-selection{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
+
+.best-score-text{
+    font-weight: 100;
+    font-size: calc(0.75vw + 0.75vh);
+    color: white;
+    padding: 5%;
+}
+
+.best-score-row{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+    color: gold;
+    font-size: calc(0.5vw + 0.5vh);
+    font-weight: 300;
+}
+
+.best-score-row>*{
+    flex-grow: 1;
+}
+
+.best-score-row>*>*{
+    padding: 3%;
+}
+
+.actual-score-text{
+    font-size: calc(0.9vw + 0.9vh);
 }

@@ -1,0 +1,120 @@
+.rank-section{
+    width: 33%;
+    height: 50%;
+
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    justify-content: center;
+    align-items:flex-end;
+
+    color: gold;
+}
+
+.rank-section>*{
+    flex-grow: 1;
+}
+
+.ranking-letter{
+    font-size: calc(20vw + 20vh);
+    font-weight: 1000;
+    letter-spacing: calc(-8vw - 8vh);
+    text-shadow: 0px 0px calc(10vw + 10vh) gold;
+}
+
+.ranking-text{
+    text-align:end;
+    font-weight: 1000;
+    font-size: calc(1vw + 1vh);
+    text-shadow: 0px 0px calc(0.1vw + 0.1vh) rgba(0, 0, 0, 0.25);
+}
+
+.stat-side{
+    position: fixed;
+    width: 50%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(25px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5%;
+}
+
+.stat-side>*{
+    padding: 2%;
+}
+
+.stat-side .song-title{
+    color: white;
+    font-weight: 500;
+    font-size: calc(1vw + 1vh);
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
+    height: 10%;
+}
+
+.stat-side .stage-clear-text{
+    color: white;
+    font-weight: 100;
+    font-size: calc(3vw + 3vh);
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
+}
+
+.stat-side .score-stats-row{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    text-align: right;
+
+    position: relative;
+    
+    color: white;
+    font-size: calc(1vw + 1vh);
+}
+.stat-side .score-stats-row>*{
+    flex-grow: 1;
+}
+
+.stat-side .score-stats-row .left{
+    font-weight: 100;
+    text-align: left;
+}
+
+.score-stats-row .perfect{
+    text-align: left;
+    font-weight: 500;
+    color: gold;
+}
+
+.score-stats-row .ok{
+    text-align: left;
+    font-weight: 500;
+    color: green;
+}
+
+.score-stats-row .good{
+    text-align: right;
+    font-weight: 500;
+    color: blue;
+}
+
+.score-stats-row .miss{
+    text-align: right;
+    font-weight: 500;
+    color: red;
+}
+
+.full-combo-text{
+    font-weight: 1000;
+    color: gold;
+}
+
+.ranking-score{
+    font-weight: 500;
+    font-size: calc(3vw + 3vh);
+    color: gold;
+}
