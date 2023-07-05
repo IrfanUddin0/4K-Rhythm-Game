@@ -233,7 +233,8 @@ export class Gameplay extends GameState {
     }
 
     calculateCurrentScoreMillion() {
-        return Math.floor((this.calculateActualCurrentScore() / this.calculateTotalMapMaxScore()) * 1000000);
+        return Math.floor(0.8 * (Math.floor((this.calculateActualCurrentScore() / this.calculateTotalMapMaxScore()) * 1000000))
+        + 0.2 * (Math.floor((this.maxCombo/GameInstance.getInstance().currentSong["charts"][this.chart_no].length) * 1000000)));
     }
 
     calculateRanking() {
