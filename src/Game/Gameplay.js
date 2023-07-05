@@ -41,7 +41,7 @@ class GameplayNote {
     }
 
     missWindow(self) {
-        if (this.hittable) {
+        if (this.hittable && GameInstance.getInstance().getGameplayState()) {
             this.hittable = false;
             this.state = 'missed';
             if (GameInstance.getInstance().getGameplayState().currentCombo >= 4) {
@@ -157,6 +157,10 @@ export class Gameplay extends GameState {
                     return;
                 }
             }
+        }
+
+        if(key===GameInstance.getInstance().gameSettings.exit_key){
+            GameInstance.getInstance().setGameState(new SongSelection());
         }
     }
 

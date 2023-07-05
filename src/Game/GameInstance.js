@@ -19,6 +19,7 @@ export class GameInstance {
             2: 'F',
             3: 'J',
             4: 'K',
+            exit_key: 'ESCAPE',
             audio_scale: 0.3,
             scroll_speed: 1
         }
