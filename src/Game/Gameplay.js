@@ -102,12 +102,17 @@ export class Gameplay extends GameState {
         window.addEventListener("keydown", this.keydown_handler);
         window.addEventListener("keyup", this.keyup_handler);
 
-        this.finish_timeout = window.setTimeout(() => {this.onMapComplete();}, this.map_length + 2000);
+        this.finish_timeout = window.setTimeout(() => { this.onMapComplete(); }, this.map_length + 2000);
     }
 
     onBeginPlay() {
         this.audio.volume = GameInstance.getInstance().gameSettings.audio_scale;
-        this.audio.play();
+        this.audio.play().then(this.audioDelayLoadFix());
+    }
+
+    audioDelayLoadFix(){
+        this.audio.currentTime = this.getElapsedTime() / 1000;
+        console.log("Audio loaded with a delay of",this.getElapsedTime(),"ms")
     }
 
     onUpdate() {
@@ -124,7 +129,7 @@ export class Gameplay extends GameState {
             this.getMissCount(),
             this.maxCombo,
             GameInstance.getInstance().currentSong["charts"][this.chart_no].length
-            );
+        );
 
         GameInstance.getInstance().setGameState(new SongSelection(true));
     }
@@ -159,7 +164,7 @@ export class Gameplay extends GameState {
             }
         }
 
-        if(key===GameInstance.getInstance().gameSettings.exit_key){
+        if (key === GameInstance.getInstance().gameSettings.exit_key) {
             GameInstance.getInstance().setGameState(new SongSelection());
         }
     }

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./SongSelect.css";
 import { Link, Navigate } from "react-router-dom";
 

@@ -40,9 +40,9 @@ export const GameplayPage = () => {
             <p className="accuracy-text">
                 {GameInstance.getInstance().getGameplayState().calculateAccuracy()}%
             </p>
-            {GameInstance.getInstance().getGameplayState().display_text.map(element => {
+            {GameInstance.getInstance().getGameplayState().display_text.map((element, index) => {
                 return (
-                    <p className="hit-score-text" style={{ opacity: 1 - element.getElapsedTime() / 500 }}>
+                    <p className="hit-score-text" style={{ opacity: 1 - element.getElapsedTime() / 500 }} key={(element, index)}>
                         {element.text}
                     </p>)
             })}
@@ -57,14 +57,15 @@ export const GameplayPage = () => {
 };
 
 function drawGameplayNotes(pos) {
-    return GameInstance.getInstance().getGameplayState().map_objects.map(element => {
+    return GameInstance.getInstance().getGameplayState().map_objects.map((element, index) => {
         if (element.pos === pos && element.state === 'normal') {
             return <div className="gameplay-note"
                 style={{
                     bottom: 0.15 * window.innerHeight -
                         (GameInstance.getInstance().getGameplayState().getElapsedTime() - GameInstance.getInstance().currentSong["offset"] - element.time)
                         / GameInstance.getInstance().gameSettings.scroll_speed
-                }}>
+                }}
+                key={(element, index)}>
 
             </div>
         }

@@ -9,7 +9,6 @@ import { GameInstance } from "../../Game/GameInstance";
 export const RankingPanel = () => {
     GameInstance.getInstance().getSongSelectionState().viewscore = false;
     var score = Scores.getRecentScore();
-    console.log(score);
 
     if (!score) {
         return (<Navigate to="../SongSelect" />)
