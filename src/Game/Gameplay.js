@@ -41,7 +41,7 @@ class GameplayNote {
     }
 
     missWindow(self) {
-        if (this.hittable && GameInstance.getInstance().getGameplayState()) {
+        if (this.hittable && GameInstance.getInstance().getGameplayState() && GameInstance.getInstance().getGameplayState().map_objects.includes(this)) {
             this.hittable = false;
             this.state = 'missed';
             if (GameInstance.getInstance().getGameplayState().currentCombo >= 4) {
@@ -146,6 +146,8 @@ export class Gameplay extends GameState {
         window.removeEventListener("keyup", this.keyup_handler);
 
         clearTimeout(this.finish_timeout);
+
+
     }
 
     getElapsedTime() {
