@@ -1,13 +1,19 @@
 # 4-Key Rhythm Game
 A 4k Rhythm Game, made this as an exercise for using React to make a game.
 
+## TODO:
+1. Map editor
+2. Map downloader (from osu! beatmaps)
+3. Difficulty algorithm
+4. Search feature
+
 ## Additional Notes
-In the [tools directory](./tools/) there is a python script that allows you to convert osu!mania maps to use in this game.
-<br>
+In the `./tools/` directory there is a python script that allows you to convert osu!mania maps to use in this game.
+
 To do this, make a directory in the tools folder with the .osu files in there and then run:
 ### `python osu_mania_mapsetConverter.py [directory-name]`
-<br>
-Then add the out_map.json file somewhere in the [public directory](./public/) and add that path as an entry in [maps.json](./public/songs/maps.json)
+
+Then add the out_map.json file somewhere in the `./public/` (e.g. in `./public/songs/` and add that path as an entry in maps.json located in `./public/songs/`
 
 ## Screenshots
 
