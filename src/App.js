@@ -5,6 +5,7 @@ import { GameplayPage } from './Pages/GameplayPage/GameplayPage';
 import { MainMenuPage } from './Pages/MainMenu/MainMenu';
 import { SongSelect } from './Pages/SongSelect/SongSelect';
 import { RankingPanel } from './Pages/RankingPanel/RankingPanel';
+import { ScoresPage } from './Pages/ScoresPage/ScoresPage';
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
             <Route path='SongSelect' element={<SongSelect/>}/>
             <Route path='Game' element={<GameplayPage/>}/>
             <Route path='Ranking' element={<RankingPanel/>}/>
+            <Route path='Scores' element={<ScoresPage/>}/>
         </Routes>
         </BrowserRouter>
     </div>

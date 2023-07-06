@@ -34,7 +34,7 @@ export const SongSelect = () => {
     )
 }
 
-const SongSelectBackButton = () => {
+export const SongSelectBackButton = () => {
     return (
         <Link to={'../Main'}>
             <div className="song-select-back-button">
