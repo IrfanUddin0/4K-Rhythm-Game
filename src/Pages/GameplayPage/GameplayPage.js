@@ -57,7 +57,7 @@ export const GameplayPage = () => {
 };
 
 function drawGameplayNotes(pos) {
-    return GameInstance.getInstance().getGameplayState().map_objects.map((element, index) => {
+    return GameInstance.getInstance().getGameplayState().getObjectsToDraw().map((element, index) => {
         if (element.pos === pos && element.state === 'normal') {
             return <div className="gameplay-note"
                 style={{

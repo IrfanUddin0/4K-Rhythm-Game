@@ -55,7 +55,7 @@
     flex-direction: column;
     justify-content: space-evenly;
 
-    width: 33%;
+    width: 30%;
     padding: 0.5%;
 }
 
@@ -63,7 +63,7 @@
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: calc(1vw + 1vh);
 
-    aspect-ratio: 5;
+    aspect-ratio: 4.5;
     margin: 1%;
 
     display: flex;
@@ -114,13 +114,13 @@
 }
 
 .top-score-card .ranking-letter{
-    font-size: calc(2vw + 2vh);
+    font-size: calc(1.5vw + 1.5vh);
     color: #FFB800;
     font-weight: 500;
-    letter-spacing: calc(-0.5vw - 0.5vh);
+    letter-spacing: 0;
     text-shadow: 0px 0px calc(10vw + 10vh) #FFB800;
     position:absolute;
-    right: 5%;
+    right: 3%;
 }
 
 .top-scores-title-text{

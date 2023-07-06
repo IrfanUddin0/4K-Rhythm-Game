@@ -315,4 +315,16 @@ export class Gameplay extends GameState {
     breakCombo() {
         this.currentCombo = 0;
     }
+
+    getObjectsToDraw(){
+        var out = [];
+        this.map_objects.forEach(elem => {
+            var time = (elem.time + GameInstance.getInstance().currentSong["offset"]) - this.getElapsedTime();
+            if(elem.hittable && time<5000){
+                out.push(elem)
+            }
+        })
+
+        return out;
+    }
 }

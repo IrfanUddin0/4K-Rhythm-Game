@@ -50,7 +50,7 @@ class TopScores extends React.Component {
                 {this.top_scores.map((elem, index) => {
                     return (
                         <div className="top-score-card" key={(elem, index)}>
-                            <div className="score-number">
+                            <div className="score-number" style={index===0? {color:'gold'} : index===1? {color:'#D7D7D7'} : index===2? {color:'#E77535'} : {color:'rgba(255, 255, 255, 0.25)'}}>
                                 #{index+1}
                             </div>
                             <div>
