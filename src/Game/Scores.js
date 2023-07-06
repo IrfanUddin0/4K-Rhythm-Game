@@ -62,4 +62,51 @@ export class Scores {
 
         return highest_score;
     }
+
+    static getScoresSorted(){
+        var scores = JSON.parse(localStorage.getItem("scores"))["scores"];
+        
+        for (var i = 0; i < scores.length; i++) { 
+            for (var j = 0; j < (scores.length - i - 1); j++) {
+                if (scores[j]["score"] < scores[j + 1]["score"]) {
+                    var temp = scores[j];
+                    scores[j] = scores[j + 1];
+                    scores[j + 1] = temp;
+                }
+            }
+        }
+
+        var unique = [];
+        var isInUnique = (elem, arr) => {
+            for (let i = 0; i < arr.length; i++) {
+                if(arr[i]["song_title"]===elem["song_title"]
+                && arr[i]["map_creator"]===elem["map_creator"]
+                && arr[i]["chart_no"]===elem["chart_no"]){
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        scores.forEach((elem) => {
+            if(!isInUnique(elem, unique)){
+                unique.push(elem);
+            }
+        })
+
+        return unique;
+    }
+
+    static calculateRanking(score){
+        var acc = score.accuracy;
+        if (acc >= 100) { acc = 'SS' }
+        else if (acc >= 95) { acc = 'S' }
+        else if (acc >= 90) { acc = 'A' }
+        else if (acc >= 85) { acc = 'B' }
+        else if (acc >= 75) { acc = 'C' }
+        else { acc = 'D' }
+
+        return acc;
+    }
 }

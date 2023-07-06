@@ -14,14 +14,6 @@ export const RankingPanel = () => {
         return (<Navigate to="../SongSelect" />)
     }
 
-    var acc = score.accuracy;
-    if (acc >= 100) { acc = 'SS' }
-    else if (acc >= 95) { acc = 'S' }
-    else if (acc >= 90) { acc = 'A' }
-    else if (acc >= 85) { acc = 'B' }
-    else if (acc >= 75) { acc = 'C' }
-    else { acc = 'D' }
-
     return (
         <div>
             <MapBackground />
@@ -70,7 +62,7 @@ export const RankingPanel = () => {
             </div>
             <div className="rank-section">
                 <div className="ranking-text">RANK</div>
-                <div className="ranking-letter">{acc}</div>
+                <div className="ranking-letter">{Scores.calculateRanking(score)}</div>
             </div>
             <RankingPanelBackButton />
         </div>
