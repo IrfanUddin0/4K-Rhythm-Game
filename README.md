@@ -6,6 +6,7 @@ A 4k Rhythm Game, made this as an exercise for using React to make a game.
 2. Map downloader (from osu! beatmaps)
 3. Difficulty algorithm
 4. Search feature
+5. Hold notes (maybe)
 
 ## Additional Notes
 In the `./tools/` directory there is a python script that allows you to convert osu!mania maps to use in this game.
