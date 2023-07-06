@@ -63,7 +63,7 @@ function drawGameplayNotes(pos) {
                 style={{
                     bottom: 0.15 * window.innerHeight -
                         (GameInstance.getInstance().getGameplayState().getElapsedTime() - GameInstance.getInstance().currentSong["offset"] - element.time)
-                        / GameInstance.getInstance().gameSettings.scroll_speed
+                        / ( 3 / GameInstance.getInstance().gameSettings.scroll_speed)
                 }}
                 key={(element, index)}>
 

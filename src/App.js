@@ -6,6 +6,7 @@ import { MainMenuPage } from './Pages/MainMenu/MainMenu';
 import { SongSelect } from './Pages/SongSelect/SongSelect';
 import { RankingPanel } from './Pages/RankingPanel/RankingPanel';
 import { ScoresPage } from './Pages/ScoresPage/ScoresPage';
+import { OptionsPage } from './Pages/OptionsPage/OptionsPage';
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
             <Route path='Game' element={<GameplayPage/>}/>
             <Route path='Ranking' element={<RankingPanel/>}/>
             <Route path='Scores' element={<ScoresPage/>}/>
+            <Route path='Options' element={<OptionsPage/>}/>
         </Routes>
         </BrowserRouter>
     </div>
