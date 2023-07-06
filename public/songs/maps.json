@@ -5,6 +5,33 @@
         },
         {
             "url": "./songs/blackorwhite/blackorwhite_map.json"
+        },
+        {
+            "url": "./songs/aiae.json"
+        },
+        {
+            "url": "./songs/anima_map.json"
+        },
+        {
+            "url": "./songs/bluedragon_map.json"
+        },
+        {
+            "url": "./songs/censored_map.json"
+        },
+        {
+            "url": "./songs/ExitThisEarthAtomosphere_map.json"
+        },
+        {
+            "url": "./songs/overthetop_map.json"
+        },
+        {
+            "url": "./songs/rubikscube_map.json"
+        },
+        {
+            "url": "./songs/theempress_map.json"
+        },
+        {
+            "url": "./songs/zeigannozettaireido_map.json"
         }
     ]
 }

@@ -23,7 +23,7 @@ def parseMap(path):
 
         return out
 
-    file = open(path, 'r')
+    file = open(path, 'r', encoding='utf-8', errors='ignore')
     lines = file.readlines()
 
     offset = 0

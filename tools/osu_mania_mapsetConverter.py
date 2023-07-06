@@ -28,6 +28,8 @@ def main(args=sys.argv):
 
     files = glob.glob(args[1]+"/*.osu")
 
+    files = sorted( files, key =  lambda x: os.stat(x).st_size)
+
     if (len(files) == 0):
         print("no .osu files")
         return
@@ -48,7 +50,7 @@ def main(args=sys.argv):
         converted_maps.append(osu_mania_converter.parseMap(f))
         json_out["charts"].append(converted_maps[len(converted_maps)-1][0])
     
-    metadatafile = open(files[0], 'r')
+    metadatafile = open(files[0], 'r', encoding='utf-8', errors='ignore')
     metadatafile_lines = metadatafile.readlines();
     json_out["song_title"] = getMetadataValue('Artist', metadatafile_lines) + " - " + getMetadataValue('Title', metadatafile_lines)
     json_out["map_creator"] = getMetadataValue('Creator', metadatafile_lines)
